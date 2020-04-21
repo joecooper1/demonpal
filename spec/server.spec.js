@@ -33,4 +33,14 @@ describe("/API", () => {
         });
     });
   });
+  describe("/demons", () => {
+    it("get demon from id", () => {
+      return request(server)
+        .get("/api/demons/1")
+        .expect(200)
+        .then((result) => {
+          expect(result.body.demon.name).to.equal("Stian");
+        });
+    });
+  });
 });
