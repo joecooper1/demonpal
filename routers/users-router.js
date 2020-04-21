@@ -5,4 +5,4 @@ const usersRouter = require("express").Router();
 
 usersRouter.route("/:username").get(getUser).all(methodDisallowed);
 
-module.exports = { usersRouter };
+module.exports = usersRouter;
