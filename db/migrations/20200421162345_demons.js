@@ -3,9 +3,7 @@ exports.up = function (knex) {
     demonsTable.increments("demon_id").primary();
     demonsTable.string("name");
     demonsTable.string("owner").references("users.username");
-    demonsTable
-      .timestamp("demon_created_at")
-      .defaultTo(knex.fn.now().slice(0, 10));
+    demonsTable.timestamp("demon_created_at").defaultTo(knex.fn.now());
   });
 };
 
