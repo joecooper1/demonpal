@@ -10,5 +10,6 @@ exports.seed = function (knex) {
     })
     .then(() => {
       const demonsInsertions = knex("demons").insert(demonData);
+      return Promise.all([demonsInsertions]);
     });
 };
