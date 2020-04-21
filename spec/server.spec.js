@@ -29,7 +29,7 @@ describe("/API", () => {
         .get("/api/users/Joe")
         .expect(200)
         .then((result) => {
-          expect(result.body).to.equal(1);
+          expect(result.body.user.username).to.equal("Joe");
         });
     });
   });
