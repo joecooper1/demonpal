@@ -14,4 +14,13 @@ describe("/API", () => {
   after(() => {
     return connection.destroy();
   });
+  it("GET:200 returns an object of all endpoints", () => {
+    return request(server)
+      .get("/api")
+      .expect(200)
+      .then((result) => {
+        console.log(result.body);
+        expect(result.body).to.be.an("object");
+      });
+  });
 });

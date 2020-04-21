@@ -1,5 +1,5 @@
 const getEndpoints = (req, res, next) => {
-  const possibleEndpoints = {};
+  const possibleEndpoints = { "/api": "get endpoints" };
   res.status(200).send(JSON.stringify(possibleEndpoints));
 };
 
