@@ -3,6 +3,8 @@ const server = express();
 const fs = require("fs");
 const cors = require("cors");
 
+const apiRouter = require("./routers/api-router");
+
 server.use(cors());
 
 server.use(express.json());
@@ -17,5 +19,7 @@ server.use(function textLogger(req, res, next) {
     next();
   });
 });
+
+server.use("/api", apiRouter);
 
 module.exports = server;
