@@ -41,6 +41,15 @@ describe("/API", () => {
           expect(result.body.users.length).to.equal(1);
         });
     });
+    it("get demons from username", () => {
+      return request(server)
+        .get("/api/users/Joe/demons")
+        .expect(200)
+        .then((result) => {
+          expect(result.body.demons[0].name).to.equal("Stian");
+          expect(result.body.demons).to.be.an("array");
+        });
+    });
   });
   describe("/demons", () => {
     it("get demon from id", () => {

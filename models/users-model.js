@@ -1,5 +1,16 @@
 const connection = require("../db/connection");
 
+const selectDemonsByUser = (username = "%") => {
+  return connection("demons")
+    .select("*")
+    .where("owner", "like", username)
+    .then((demons) => {
+      if (demons.length === 0)
+        return Promise.reject({ status: 404, msg: "Not found" });
+      else return demons;
+    });
+};
+
 const selectUser = (username = "%") => {
   return connection("users")
     .select("*")
@@ -15,4 +26,4 @@ const selectUsers = () => {
   return connection("users").select("*");
 };
 
-module.exports = { selectUser, selectUsers };
+module.exports = { selectUser, selectUsers, selectDemonsByUser };
