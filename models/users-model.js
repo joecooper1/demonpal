@@ -11,4 +11,8 @@ const selectUser = (username = "%") => {
     });
 };
 
-module.exports = { selectUser };
+const selectUsers = () => {
+  return connection("users").select("*");
+};
+
+module.exports = { selectUser, selectUsers };
