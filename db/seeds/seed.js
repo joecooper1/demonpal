@@ -6,6 +6,7 @@ exports.seed = function (knex) {
     .then(() => knex.migrate.latest())
     .then(() => {
       const usersInsertions = knex("users").insert(userData);
-      return Promise.all([usersInsertions]);
+      const demonsInsertions = knex("demons").insert(demonData);
+      return Promise.all([usersInsertions, demonsInsertions]);
     });
 };
