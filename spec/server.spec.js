@@ -23,4 +23,14 @@ describe("/API", () => {
         expect(result.body).to.be.an("object");
       });
   });
+  describe("/users", () => {
+    it("get user_id from username", () => {
+      return request(server)
+        .get("/api/users/Joe")
+        .expect(200)
+        .then((result) => {
+          expect(result.body).to.equal(1);
+        });
+    });
+  });
 });

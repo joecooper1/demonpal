@@ -4,6 +4,10 @@ const {
   methodDisallowed,
 } = require("../controllers/api-controllers");
 
+const usersRouter = require("./users-router");
+
+apiRouter.use("/users", usersRouter);
+
 apiRouter.route("/").get(getEndpoints).all(methodDisallowed);
 
 module.exports = apiRouter;
