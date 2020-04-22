@@ -73,10 +73,13 @@ describe("/API", () => {
     });
     it("delete a user and all their demons", () => {
       return request(server)
-        .delete("api/users/Joe")
+        .delete("/api/users/Joe")
         .expect(204)
         .then(() => {
           return request(server).get("api/users/Joe").expect(404);
+        })
+        .then(() => {
+          return request(server).get("api/demons/1").expect(404);
         });
     });
   });

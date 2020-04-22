@@ -30,4 +30,21 @@ const insertUser = (username) => {
   return connection("users").insert({ username }).returning("*");
 };
 
-module.exports = { selectUser, selectUsers, selectDemonsByUser, insertUser };
+const removeUser = (username) => {
+  return connection("users")
+    .where("username", "like", username)
+    .del()
+    .then((count) => {
+      if (count === 0) {
+        return Promise.reject({ status: 404, msg: "Not found" });
+      } else return count;
+    });
+};
+
+module.exports = {
+  selectUser,
+  selectUsers,
+  selectDemonsByUser,
+  insertUser,
+  removeUser,
+};

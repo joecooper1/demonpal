@@ -3,6 +3,7 @@ const {
   selectUsers,
   selectDemonsByUser,
   insertUser,
+  removeUser,
 } = require("../models/users-model.js");
 
 const getDemonsByUser = (req, res, next) => {
@@ -44,4 +45,13 @@ const postUser = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-module.exports = { getUser, getUsers, getDemonsByUser, postUser };
+const deleteUser = (req, res, next) => {
+  const { username } = req.params;
+  removeUser(username)
+    .then((count) => {
+      res.status(204).send();
+    })
+    .catch((err) => next(err));
+};
+
+module.exports = { getUser, getUsers, getDemonsByUser, postUser, deleteUser };
