@@ -24,7 +24,7 @@ describe("/API", () => {
       });
   });
   describe("/users", () => {
-    it("get user_id from username", () => {
+    it("get user from username", () => {
       return request(server)
         .get("/api/users/Joe")
         .expect(200)
@@ -69,6 +69,14 @@ describe("/API", () => {
         .expect(403)
         .then((response) => {
           expect(response.body.msg).to.equal("Username already exists");
+        });
+    });
+    it("delete a user and all their demons", () => {
+      return request(server)
+        .delete("api/users/Joe")
+        .expect(204)
+        .then(() => {
+          return request(server).get("api/users/Joe").expect(404);
         });
     });
   });
