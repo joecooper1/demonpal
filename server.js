@@ -5,6 +5,13 @@ const cors = require("cors");
 
 const apiRouter = require("./routers/api-router");
 
+const {
+  errorCatch,
+  customErrorCatch,
+  psqlErrorCatch,
+  serverErrorCatch,
+} = require("./controllers/error-handlers");
+
 server.use(cors());
 
 server.use(express.json());
@@ -21,5 +28,13 @@ server.use(function textLogger(req, res, next) {
 });
 
 server.use("/api", apiRouter);
+
+server.use("/*", errorCatch);
+
+server.use(customErrorCatch);
+
+server.use(psqlErrorCatch);
+
+server.use(serverErrorCatch);
 
 module.exports = server;

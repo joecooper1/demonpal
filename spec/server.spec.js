@@ -59,6 +59,9 @@ describe("/API", () => {
           expect(result.body.user.username).to.equal("Barry");
         });
     });
+    it("error if add new user does not contain a username", () => {
+      return request(server).post("/api/users").send({}).expect(400);
+    });
   });
   describe("/demons", () => {
     it("get demon from id", () => {

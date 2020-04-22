@@ -26,7 +26,7 @@ const selectUsers = () => {
   return connection("users").select("*");
 };
 
-const postUser = (username = "%") => {
+const postUser = (username) => {
   return connection("users").insert({ username }).returning("*");
 };
 
