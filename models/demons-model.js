@@ -17,4 +17,11 @@ const insertDemon = (body) => {
   return connection("demons").insert(body).returning("*");
 };
 
-module.exports = { selectDemon, insertDemon };
+const updateDemon = (demon_id, body) => {
+  return connection("demons")
+    .where("demon_id", demon_id)
+    .update(body)
+    .returning("*");
+};
+
+module.exports = { selectDemon, insertDemon, updateDemon };

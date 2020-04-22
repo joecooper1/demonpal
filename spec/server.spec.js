@@ -110,13 +110,22 @@ describe("/API", () => {
         })
         .expect(400);
     });
-    it("update demon", () => {
+    it("update demon life_stage", () => {
       return request(server)
         .patch("/api/demons/1")
         .send({ life_stage: 2 })
         .expect(200)
         .then((result) => {
           expect(result.body.demon.life_stage).to.equal(2);
+        });
+    });
+    it("update demon weight", () => {
+      return request(server)
+        .patch("/api/demons/1")
+        .send({ weight: 9 })
+        .expect(200)
+        .then((result) => {
+          expect(result.body.demon.weight).to.equal(9);
         });
     });
   });
