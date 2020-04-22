@@ -110,5 +110,14 @@ describe("/API", () => {
         })
         .expect(400);
     });
+    it("update demon", () => {
+      return request(server)
+        .patch("/api/demons/1")
+        .send({ life_stage: 2 })
+        .expect(200)
+        .then((result) => {
+          expect(result.body.demon.life_stage).to.equal(2);
+        });
+    });
   });
 });
