@@ -121,6 +121,18 @@ describe("/API", () => {
         })
         .expect(400);
     });
+    it("add new demon errors if owner does not exist", () => {
+      return request(server)
+        .post("/api/demons")
+        .send({
+          name: "Bellsy Bob",
+          owner: "Mike",
+          personality: "Erratic",
+          weight: "2",
+          type: "Short-fused",
+        })
+        .expect(404);
+    });
     it("update demon life_stage", () => {
       return request(server)
         .patch("/api/demons/1")
