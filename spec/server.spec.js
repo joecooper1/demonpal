@@ -58,6 +58,7 @@ describe("/API", () => {
         .expect(200)
         .then((result) => {
           expect(result.body.demon.name).to.equal("Stian");
+          expect(result.body.demon.weight).to.equal(4);
         });
     });
   });
