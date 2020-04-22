@@ -4,5 +4,6 @@ module.exports = [
     owner: "Joe",
     personality: "Calm",
     weight: "4",
+    type: "ghoul",
   },
 ];
