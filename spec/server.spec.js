@@ -108,11 +108,7 @@ describe("/API", () => {
           personality: "Erratic",
           weight: "2",
         })
-        .expect(201)
-        .then((result) => {
-          expect(result.body.demon.owner).to.equal("Joe");
-          expect(result.body.demon.life_stage).to.equal(1);
-        });
+        .expect(400);
     });
   });
 });
