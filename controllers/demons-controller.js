@@ -1,4 +1,4 @@
-const { selectDemon } = require("../models/demons-model.js");
+const { selectDemon, insertDemon } = require("../models/demons-model.js");
 
 const getDemon = (req, res, next) => {
   const { demon_id } = req.params;
@@ -10,4 +10,13 @@ const getDemon = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-module.exports = { getDemon };
+const postDemon = (req, res, next) => {
+  insertDemon(req.body)
+    .then((demon) => {
+      console.log(demon);
+      res.status(201).send({ demon: demon[0] });
+    })
+    .catch((err) => next(err));
+};
+
+module.exports = { getDemon, postDemon };

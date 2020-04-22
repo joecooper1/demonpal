@@ -13,4 +13,8 @@ const selectDemon = (demon_id = "%") => {
   );
 };
 
-module.exports = { selectDemon };
+const insertDemon = (body) => {
+  return connection("demons").insert(body).returning("*");
+};
+
+module.exports = { selectDemon, insertDemon };
