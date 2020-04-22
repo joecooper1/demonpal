@@ -4,6 +4,10 @@ exports.up = function (knex) {
     demonsTable.string("name");
     demonsTable.string("owner").references("users.username");
     demonsTable.timestamp("demon_created_at").defaultTo(knex.fn.now());
+    demonsTable.string("personality");
+    demonsTable.integer("life_stage").defaultTo(1);
+    demonsTable.integer("weight");
+    demonsTable.string("type");
   });
 };
 
