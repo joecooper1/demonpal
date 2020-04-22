@@ -99,5 +99,20 @@ describe("/API", () => {
           expect(result.body.demon.life_stage).to.equal(1);
         });
     });
+    it("add new demon errors if not given complete info, eg no type", () => {
+      return request(server)
+        .post("/api/demons")
+        .send({
+          name: "Bellsy Bob",
+          owner: "Joe",
+          personality: "Erratic",
+          weight: "2",
+        })
+        .expect(201)
+        .then((result) => {
+          expect(result.body.demon.owner).to.equal("Joe");
+          expect(result.body.demon.life_stage).to.equal(1);
+        });
+    });
   });
 });
