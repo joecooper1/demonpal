@@ -62,6 +62,15 @@ describe("/API", () => {
     it("error if add new user does not contain a username", () => {
       return request(server).post("/api/users").send({}).expect(400);
     });
+    it("error if add new user repeats a username", () => {
+      return request(server)
+        .post("/api/users")
+        .send({ username: "Joe" })
+        .expect(403)
+        .then((response) => {
+          expect(response.body.msg).to.equal("Username already exists");
+        });
+    });
   });
   describe("/demons", () => {
     it("get demon from id", () => {
