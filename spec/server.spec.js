@@ -80,6 +80,23 @@ describe("/API", () => {
         .then((result) => {
           expect(result.body.demon.name).to.equal("Stian");
           expect(result.body.demon.weight).to.equal(4);
+          expect(result.body.demon.life_stage).to.equal(1);
+        });
+    });
+    it("add new demon", () => {
+      return request(server)
+        .post("/api/demons")
+        .send({
+          name: "Bellsy Bob",
+          owner: "Joe",
+          personality: "Erratic",
+          weight: "2",
+          type: "drude",
+        })
+        .expect(201)
+        .then((result) => {
+          expect(result.body.demon.owner).to.equal("Joe");
+          expect(result.body.demon.life_stage).to.equal(1);
         });
     });
   });
