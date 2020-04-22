@@ -26,4 +26,8 @@ const selectUsers = () => {
   return connection("users").select("*");
 };
 
-module.exports = { selectUser, selectUsers, selectDemonsByUser };
+const postUser = (username = "%") => {
+  return connection("users").insert({ username }).returning("*");
+};
+
+module.exports = { selectUser, selectUsers, selectDemonsByUser, postUser };

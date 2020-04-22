@@ -57,7 +57,6 @@ describe("/API", () => {
         .expect(201)
         .then((result) => {
           expect(result.body.user.username).to.equal("Barry");
-          expect(result.body.user.user_id).to.equal(2);
         });
     });
   });

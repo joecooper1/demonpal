@@ -2,6 +2,7 @@ const {
   selectUser,
   selectUsers,
   selectDemonsByUser,
+  postUser,
 } = require("../models/users-model.js");
 
 const getDemonsByUser = (req, res, next) => {
@@ -33,4 +34,14 @@ const getUser = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-module.exports = { getUser, getUsers, getDemonsByUser };
+const addUser = (req, res, next) => {
+  const { username } = req.body;
+  postUser(username)
+    .then((user) => {
+      console.log(user);
+      res.status(201).send({ user: user[0] });
+    })
+    .catch((err) => next(err));
+};
+
+module.exports = { getUser, getUsers, getDemonsByUser, addUser };
