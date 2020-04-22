@@ -50,6 +50,16 @@ describe("/API", () => {
           expect(result.body.demons).to.be.an("array");
         });
     });
+    it("add new user", () => {
+      return request(server)
+        .post("/api/users")
+        .send({ username: "Barry" })
+        .expect(201)
+        .then((result) => {
+          expect(result.body.user.username).to.equal("Barry");
+          expect(result.body.user.user_id).to.equal(2);
+        });
+    });
   });
   describe("/demons", () => {
     it("get demon from id", () => {
