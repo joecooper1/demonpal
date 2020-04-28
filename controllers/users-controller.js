@@ -36,8 +36,8 @@ const getUser = (req, res, next) => {
 };
 
 const postUser = (req, res, next) => {
-  const { username } = req.body;
-  insertUser(username)
+  const { username, password } = req.body;
+  insertUser(username, password)
     .then((user) => {
       console.log(user);
       res.status(201).send({ user: user[0] });

@@ -26,8 +26,8 @@ const selectUsers = () => {
   return connection("users").select("*");
 };
 
-const insertUser = (username) => {
-  return connection("users").insert({ username }).returning("*");
+const insertUser = (username, password) => {
+  return connection("users").insert({ username, password }).returning("*");
 };
 
 const removeUser = (username) => {
