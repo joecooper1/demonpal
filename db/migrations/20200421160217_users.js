@@ -1,7 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable("users", (usersTable) => {
     usersTable.string("username").unique().primary();
-    usersTable.string("password");
+    usersTable.string("password").notNull();
     usersTable.timestamp("account_created_at").defaultTo(knex.fn.now());
   });
 };
